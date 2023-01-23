@@ -1,0 +1,99 @@
+html, body {
+    font-size: 16px;
+    height: 100vh;
+    width: 100vw;
+}
+
+body {
+    display: flex;
+    flex-flow: column;
+}
+
+header {
+    position: fixed;
+    top: 0px;
+    height: 50px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: brown;
+}
+
+#company-name {
+    grid-area: 1 / 1 / 1 / 1;
+    padding: 0 5px;
+    height: 100%;
+    display: inline-flex;
+    align-items: center;
+}
+
+#company-name h1{
+    font-size: 2rem;
+    color: aliceblue;
+}
+
+#nav-bar {
+    grid-area: 2 / 1 / 2 / 1;
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    height: 100%;
+}
+
+#nav-bar nav {
+    height: 100%;
+    flex-grow: 2;
+}
+
+#nav-bar nav ol {
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#nav-bar nav ol li {
+    border: 1px solid black;
+    padding: 2px 10px;
+    border-radius: 15px;
+    background-color: whitesmoke;
+}
+
+#nav-bar #login {
+    flex-grow: 0.5;
+    display: flex;
+    justify-content: space-around;
+}
+
+main {
+    padding-top: 50px;
+    padding-bottom: 35px;
+    width: 100vw;
+    height: 100%;
+}
+
+footer {
+    position: fixed;
+    bottom: 0px;
+    height: 35px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: brown;
+}
+
+footer span {
+    padding: 0 5px;
+    margin: 0 15px;
+    color: whitesmoke;
+}
+
+@media only screen and (max-width: 575px) {
+    header {
+        justify-content: center;
+    }
+    header #nav-bar{
+        display: none;
+    }
+}
