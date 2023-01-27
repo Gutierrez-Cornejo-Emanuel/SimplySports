@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 class AppHeader extends React.Component {
     render() {
@@ -10,9 +11,9 @@ class AppHeader extends React.Component {
             <div id="nav-bar">
                 <nav>
                     <ol>
-                        <li>Home</li>
-                        <li><a href="./lounge.html">Betting Lounge</a></li>
-                        <li><a href="./about.html">About</a></li>
+                        <li><Link to="/">Home</Link></li>
+                        <li><Link to="/lounge">Lounge</Link></li>
+                        <li><Link to="/about">About</Link></li>
                     </ol>
                 </nav>
                 <div id="login">

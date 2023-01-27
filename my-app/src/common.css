@@ -4,7 +4,7 @@ html, body {
     width: 100vw;
 }
 
-#page  {
+#root  {
     display: flex;
     flex-flow: column;
 }
