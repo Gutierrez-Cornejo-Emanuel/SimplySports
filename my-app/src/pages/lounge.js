@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function About() {
+export default function Lounge() {
     return (
         <main>
         <div id="table-nav">

@@ -11,8 +11,8 @@ export default function App () {
         <AppHeader />
         <Routes>
             <Route exact path='/' element={<Home />} />
-            <Route path='/about' element={<About />} />
             <Route path='/lounge' element={<Lounge />} />
+            <Route path='/about' element={<About />} />
         </Routes>
         <AppFooter />
     </Router>
