@@ -27,8 +27,8 @@ export const Navbar = () => {
     <Toolbar />
     <Divider />
     <List>
-      {mainNavbarItems.map((text, index) => (
-        <ListItem button key={text.id} disablePadding>
+      {mainNavbarItems.map((text) => (
+        <ListItem key={text.id} disablePadding>
           <ListItemButton>
             <ListItemIcon>
               {text.icon}

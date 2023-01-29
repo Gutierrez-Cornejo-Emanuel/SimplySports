@@ -1,10 +1,15 @@
 import React from 'react'
-import Appbar from '../../components/Appbar/Appbar'
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 
 export const Learn = () => {
   return (
-    <div>
-      <h1>Learn</h1>
-    </div>
+    <Box sx={{flexGrow:1}}>
+      <Grid container spacing={2}>
+        <Grid item xs={8}>
+          <h1>Learn</h1>
+        </Grid>
+      </Grid>
+    </Box>
   )
 }

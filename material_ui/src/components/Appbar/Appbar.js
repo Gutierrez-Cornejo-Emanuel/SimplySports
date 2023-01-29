@@ -17,7 +17,7 @@ import { useNavigate } from 'react-router-dom'
 const pages = mainAppbarPages;
 const settings = mainAppbarSettings;
 
-function Appbar() {
+function Appbar({isLoggedIn}) {
   const navigate = useNavigate();
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -31,7 +31,7 @@ function Appbar() {
 
   return (
     <AppBar position="static">
-      <Container maxWidth="xl" sx={{ bgcolor: 'brown'}}>
+      <Container maxWidth="xl">
         <Toolbar disableGutters>
           <SportsIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}/>
           <Typography
@@ -53,11 +53,11 @@ function Appbar() {
           </Typography>
           
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'space-evenly' }}>
-            {pages.map((page) => (
+            {pages.map((page) => ( 
               <Button
                 key={page.id}
                 onClick={() => navigate(page.route)}
-                sx={{ my: 2, color: 'white', display: 'block', fontFamily:'IM Fell English SC'}}
+                sx={{ my: 2, color: 'white', display: 'block'}}
               >
                 {page.label}
               </Button>
@@ -86,8 +86,10 @@ function Appbar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting.id} onClick={handleCloseUserMenu}>
+            
+              {settings.filter(setting => setting.hasAccount === isLoggedIn).map((setting) => (
+                <MenuItem key={setting.id} onClick={() => navigate(setting.route)}>
+                
                   <Typography textAlign="center">{setting.label}</Typography>
                 </MenuItem>
               ))}
