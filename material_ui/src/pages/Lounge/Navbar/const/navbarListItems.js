@@ -11,16 +11,16 @@ const leagues = [ {
 ]
 
 const teams = [ {
-    id:0,
+    id:'1',
     label: 'Team 1'
 }, {
-    id:1,
+    id:'2',
     label: 'Team 2'
 }, {
-    id:2,
+    id:'3',
     label: 'Team 3'
 }, {
-    id:3,
+    id:'4',
     label: 'Team 4'
 }
 ]

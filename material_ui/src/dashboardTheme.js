@@ -21,4 +21,10 @@ export const dashboardTheme = createTheme({
           main: '#ff8a80',
         },
       },
+    typography: {
+      h4: {
+        fontWeight:'12',
+        textAlign:'center'
+      }
+    }
     });

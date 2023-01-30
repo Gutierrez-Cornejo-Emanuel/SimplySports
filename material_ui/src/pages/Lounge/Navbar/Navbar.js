@@ -55,7 +55,7 @@ export const Navbar = () => {
                             <List>
                                 {teams.map((team) => (
                                     <ListItem key={team.id} disablePadding>
-                                        <ListItemButton>
+                                        <ListItemButton key={team.id}>
                                             <ListItemText primary={team.label} />
                                         </ListItemButton>
                                     </ListItem>

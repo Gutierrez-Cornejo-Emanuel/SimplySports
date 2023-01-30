@@ -12,7 +12,7 @@ export const Lounge = () => {
   return (
     <Box sx={{flexGrow:1}}>
       <Grid>
-        <AppBar position="static">
+        <AppBar position="static" sx={{bgcolor:'darkred'}}>
           <Container maxWidth="xl">
             <Toolbar disableGutters>
               <Button

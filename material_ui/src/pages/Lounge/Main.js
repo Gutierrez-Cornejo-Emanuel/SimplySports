@@ -18,11 +18,13 @@ export const Main = () => {
         <Grid item sx={{height:'100%'}}>
           <Box xs={6}>
           <h2>Upcoming Matches</h2>
+          {/* API Call here */}
           </Box>
         </Grid>
         <Grid item sx={{}}>
           <Box xs={6}>
           <h2>Recent News</h2>
+          {/* API Call here */}
           </Box>
         </Grid>
       </Grid>
