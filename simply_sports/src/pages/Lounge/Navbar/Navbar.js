@@ -25,13 +25,13 @@ export const Navbar = () => {
             width: drawerWidth,
             boxSizing: 'border-box',
             top: 'auto',
+            padding: '15px'
         },
         }}
         variant="permanent"
         anchor="left"
     >
         {/* <Toolbar /> */}
-        <Divider />
             {sports.map((sport) => ( 
                 <Accordion>
                     <AccordionSummary

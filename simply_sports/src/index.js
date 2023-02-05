@@ -11,7 +11,6 @@ import {
 import {About} from './pages/About/About'
 import {Learn} from './pages/Learn/Learn'
 import {Lounge} from './pages/Lounge/Lounge'
-import {News} from './pages/News/News'
 import {SignIn} from './pages/Account/SignIn';
 import { SignUp } from './pages/Account/SignUp';
 import { ThemeProvider } from '@mui/material';
@@ -29,7 +28,6 @@ root.render(
           <Route path="/" element={<About />}></Route>
           <Route path="learn" element={<Learn />}></Route>
           <Route path="practice" element={<Pratice />}></Route>
-          <Route path="news" element={<News />}></Route>
           <Route path="signin" element={<SignIn />}></Route>
           <Route path="signup" element={<SignUp />}></Route>
           <Route path="lounge" element={<Lounge/>}>

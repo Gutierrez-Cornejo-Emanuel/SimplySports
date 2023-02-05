@@ -2,7 +2,7 @@ import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import { rows, columns } from './const/tableValues';
 
-export default function DataTable({dataView}) {
+export default function DataTable({dataView, betChoice}) {
   let rowView = rows;
   let categoryToView = {
     0: 'All',
@@ -15,6 +15,15 @@ export default function DataTable({dataView}) {
     rowView = rows.filter(row =>
       categoryToView[dataView] === 'All' || row.status === categoryToView[dataView]
     )
+
+  }
+
+  const handleBetClick = (ids) => {
+    if (ids.length === 1) {
+      betChoice(rows[ids - 1])
+    } else {
+      betChoice(999)
+    }
   }
 
   return (
@@ -26,6 +35,7 @@ export default function DataTable({dataView}) {
         pageSize={5}
         rowsPerPageOptions={[5]}
         checkboxSelection
+        onSelectionModelChange={(ids) => handleBetClick(ids)}
       />
     </div>
   );
