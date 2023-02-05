@@ -8,7 +8,7 @@ const columns = [
 
 const rows = [
   { id:1, date:'01/30/23', match:'Team 1 vs Team 2', status:'Win', amount:1234},
-  { id:2, date:'01/30/23', match:'Team 3 vs Team 4', status:'Win', amount:1234}
+  { id:2, date:'01/30/23', match:'Team 3 vs Team 4', status:'Loss', amount:1234}
 ]
 
 
