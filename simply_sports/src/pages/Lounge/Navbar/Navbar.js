@@ -33,7 +33,7 @@ export const Navbar = () => {
     >
         {/* <Toolbar /> */}
             {sports.map((sport) => ( 
-                <Accordion>
+                <Accordion key={sport.id}>
                     <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1a-content"
@@ -43,7 +43,7 @@ export const Navbar = () => {
                     </AccordionSummary>
                     <AccordionDetails>
                     {leagues.map((league) => (
-                        <Accordion>
+                        <Accordion key={league.id}>
                             <AccordionSummary
                             expandIcon={<ExpandMoreIcon />}
                             aria-controls="panel1a-content"

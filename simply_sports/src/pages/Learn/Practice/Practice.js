@@ -4,14 +4,14 @@ import Grid from '@mui/material/Grid';
 import { Button, Container, Typography } from '@mui/material';
 import { fontSize } from '@mui/system';
 
-export const Pratice = () => {
+export const Practice = () => {
   return (
     <Box sx={{flexGrow:1}}>
     <Typography variant='h2' textAlign={'center'}>Training Room</Typography>
       <Grid sx={{display:'grid', gridTemplateColumns:'4fr 1fr', gridTemplateRows:'1fr 1fr'}}>
         <Container  sx={{gridArea:'1 1 1 1'}}>
           <Typography variant='h4'>Learn the Ropes</Typography>
-          <Typography paragraph='true'>
+          <Typography paragraph={true}>
             Summary
           </Typography>
         </Container>
@@ -22,7 +22,7 @@ export const Pratice = () => {
         </Button>
         <Container  sx={{gridArea:'1 1 1 1'}}>
         <Typography variant='h4'>Run A Simulation</Typography>
-          <Typography paragraph='true'>
+          <Typography paragraph={true}>
             Summary
           </Typography>
         </Container>

@@ -10,9 +10,12 @@ export const Dashboard = () => {
   const [auth, setAuth] = React.useState(true);
   const [dataView, setDataView] = React.useState(0);
   const [buttons, setCurrBet] = React.useState([
-    <Button key="0" sx={{margin:'5px'}}>New Bet</Button>,
-    <Button disabled key="1" sx={{margin:'5px'}}>View Bet</Button>,
-    <Button disabled key="2" sx={{margin:'5px'}}>Edit Bet</Button>,
+    <Button key="0" sx={{margin:'5px'}}
+    onClick={() => handleClick("0")}>New Bet</Button>,
+    <Button disabled key="1" sx={{margin:'5px'}}
+    onClick={() => handleClick("1")}>View Bet</Button>,
+    <Button disabled key="2" sx={{margin:'5px'}}
+    onClick={() => handleClick("2")}>Edit Bet</Button>,
     <Button key="3" sx={{margin:'5px'}} href="../practice">Practice</Button>
   ]);
 
@@ -20,23 +23,33 @@ export const Dashboard = () => {
     setAuth(event.target.checked);
   };
 
-  const handleClick = (event) => {
+  const handleViewClick = (event) => {
     setDataView(event)
+  }
+
+  const handleClick = (event) => {
+    console.log(event)
   }
 
   const handleBetClick = (event) => {
     if (event !== 999) {
       setCurrBet([
-        <Button key="0" sx={{margin:'5px'}}>New Bet</Button>,
-        <Button key="1" sx={{margin:'5px'}}>View Bet</Button>,
-        <Button key="2" sx={{margin:'5px'}}>Edit Bet</Button>,
+        <Button key="0" sx={{margin:'5px'}}
+        onClick={() => handleClick("0")}>New Bet</Button>,
+        <Button key="1" sx={{margin:'5px'}}
+        onClick={() => handleClick("1")}>View Bet</Button>,
+        <Button key="2" sx={{margin:'5px'}}
+        onClick={() => handleClick("2")}>Edit Bet</Button>,
         <Button key="3" sx={{margin:'5px'}} href="../practice">Practice</Button>
       ])
     } else {
       setCurrBet([
-        <Button key="0" sx={{margin:'5px'}}>New Bet</Button>,
-        <Button disabled key="1" sx={{margin:'5px'}}>View Bet</Button>,
-        <Button disabled key="2" sx={{margin:'5px'}}>Edit Bet</Button>,
+        <Button key="0" sx={{margin:'5px'}}
+        onClick={() => handleClick("0")}>New Bet</Button>,
+        <Button disabled key="1" sx={{margin:'5px'}}
+        onClick={() => handleClick("1")}>View Bet</Button>,
+        <Button disabled key="2" sx={{margin:'5px'}}
+        onClick={() => handleClick("2")}>Edit Bet</Button>,
         <Button key="3" sx={{margin:'5px'}} href="../practice">Practice</Button>
       ])
     }
@@ -51,7 +64,7 @@ export const Dashboard = () => {
           </Container>
           <Grid sx={{display: 'grid', gridTemplateColumns: '20% 60% 20%'}}>
             <Grid sx={{gridArea: '1 1 1 1', margin:'5px'}}>
-              <SelectedListItem setDataView={handleClick}></SelectedListItem>
+              <SelectedListItem setDataView={handleViewClick}></SelectedListItem>
             </Grid>
             <Grid sx={{gridArea: '1 2 1 2', margin:'15px'}}>
               <DataTable dataView={dataView} betChoice={handleBetClick}></DataTable>
