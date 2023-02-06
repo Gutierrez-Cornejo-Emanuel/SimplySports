@@ -17,7 +17,9 @@ import { ThemeProvider } from '@mui/material';
 import { dashboardTheme } from './dashboardTheme';
 import { Dashboard } from './pages/Lounge/Dashboard';
 import { Main } from './pages/Lounge/Main';
-import { Practice } from './pages/Learn/Practice/Practice';
+import { Practice } from './pages/Learn/Practice';
+import { Training } from './pages/Learn/Training';
+import { Tutorial } from './pages/Learn/Tutorial';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -28,6 +30,8 @@ root.render(
           <Route path="/" element={<About />}></Route>
           <Route path="learn" element={<Learn />}></Route>
           <Route path="practice" element={<Practice />}></Route>
+          <Route path="training" element={<Training />}></Route>
+          <Route path="tutorial" element={<Tutorial />}></Route>
           <Route path="signin" element={<SignIn />}></Route>
           <Route path="signup" element={<SignUp />}></Route>
           <Route path="lounge" element={<Lounge/>}>

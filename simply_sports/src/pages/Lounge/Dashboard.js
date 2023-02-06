@@ -5,8 +5,10 @@ import DataTable from './Table/DataTable';
 import SelectedListItem from './ButtonList/SelectedList';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
+import { useNavigate } from 'react-router-dom';
 
 export const Dashboard = () => {
+  const navigate = useNavigate();
   const [auth, setAuth] = React.useState(true);
   const [dataView, setDataView] = React.useState(0);
   const [buttons, setCurrBet] = React.useState([
@@ -16,7 +18,8 @@ export const Dashboard = () => {
     onClick={() => handleClick("1")}>View Bet</Button>,
     <Button disabled key="2" sx={{margin:'5px'}}
     onClick={() => handleClick("2")}>Edit Bet</Button>,
-    <Button key="3" sx={{margin:'5px'}} href="../practice">Practice</Button>
+    <Button key="3" sx={{margin:'5px'}}
+    onClick={() => navigate("/training")}>Practice</Button>
   ]);
 
   const handleChange = (event) => {
@@ -40,7 +43,8 @@ export const Dashboard = () => {
         onClick={() => handleClick("1")}>View Bet</Button>,
         <Button key="2" sx={{margin:'5px'}}
         onClick={() => handleClick("2")}>Edit Bet</Button>,
-        <Button key="3" sx={{margin:'5px'}} href="../practice">Practice</Button>
+        <Button key="3" sx={{margin:'5px'}}
+        onClick={() => navigate("/training")}>Practice</Button>
       ])
     } else {
       setCurrBet([
@@ -50,7 +54,8 @@ export const Dashboard = () => {
         onClick={() => handleClick("1")}>View Bet</Button>,
         <Button disabled key="2" sx={{margin:'5px'}}
         onClick={() => handleClick("2")}>Edit Bet</Button>,
-        <Button key="3" sx={{margin:'5px'}} href="../practice">Practice</Button>
+        <Button key="3" sx={{margin:'5px'}}
+        onClick={() => navigate("/training")}>Practice</Button>
       ])
     }
   }

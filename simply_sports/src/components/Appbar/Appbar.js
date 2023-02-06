@@ -34,23 +34,37 @@ function Appbar({isLoggedIn}) {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <SportsIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}/>
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'IM Fell English SC',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
+          <Button
+          variant="text"
+          onClick={() => navigate('/')}
+          sx={{
+                mr: 2,
+                display: { xs: 'none', md: 'flex' },
+                fontFamily: 'IM Fell English SC',
+                fontWeight: 700,
+                letterSpacing: '.3rem',
+                color: 'inherit',
+                textDecoration: 'none',
+              }}
           >
-            Simply Sports
-          </Typography>
+            <Typography
+              variant="h6"
+              noWrap
+              component="a"
+              sx={{
+                mr: 2,
+                display: { xs: 'none', md: 'flex' },
+                fontFamily: 'IM Fell English SC',
+                fontWeight: 700,
+                letterSpacing: '.3rem',
+                color: 'inherit',
+                textDecoration: 'none',
+              }}
+            >
+              Simply Sports
+            </Typography>
+          </Button>
+
           
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'space-evenly' }}>
             {pages.map((page) => ( 
