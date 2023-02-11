@@ -1,41 +1,40 @@
 import React from 'react'
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import { Navbar } from './Navbar/Navbar';
 import { Container } from '@mui/material';
-import { Match_list, News_list } from './api/api';
-
+import { MatchList, NewsList } from './api/api';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import { MainMenuList } from './MenuList/MenuList';
+import {sports, leagues, teams} from './api/const/homemenuItems';
 
 export const Main = () => {
 
   return (
-    <Box sx={{flexGrow:1, display:'flex'}}>
-      <Grid>
-        <Navbar />
-      </Grid>
-
+    <Box id="home-tab" sx={{flexGrow:1, display:'flex'}}>
       <Grid container sx={{
-        display: 'grid', 
-        flexGrow:1, 
-        gridTemplate:'1 2',}}>
-        <Grid item sx={{height:'50%'}}>
-          <Box xs={6}>
+        display: 'flex', 
+        flexGrow:1,
+        flexFlow:'column'}}>
+        <AppBar position="static" sx={{bgcolor:'darkred'}}>
+          <Container maxWidth="xl" sx={{display:'flex', justifyContent:'center'}}>
+            <Toolbar disableGutters sx={{justifyContent:'space-around', flexGrow:'1'}}>
+            <MainMenuList items={sports}></MainMenuList>
+            <MainMenuList items={leagues}></MainMenuList>
+            <MainMenuList items={teams}></MainMenuList>
+            </Toolbar>
+          </Container>
+        </AppBar>
+        <Grid item sx={{flexGrow:'1', display:'flex', flexFlow:'column'}}>
+          <Box xs={6} sx={{flexGrow:'1', height:'100%'}}>
             <h2>Upcoming Matches</h2>
-            {/* API Call here */}
-            <Container sx={{display:'flex', overflow:'scroll', 
-            flexFlow:'row', maxHeight:'50vh'}}>
-            <Match_list></Match_list>
-            </Container>
+            <MatchList></MatchList>
           </Box>
         </Grid>
-        <Grid item sx={{height:'50%'}}>
-          <Box xs={6}>
-          <h2>Recent News</h2>
-          {/* API Call here */}
-          <Container sx={{display:'flex', overflow:'scroll', 
-          flexFlow:'row', maxHeight:'50vh'}}>
-          <News_list></News_list>
-          </Container>
+        <Grid item sx={{flexGrow:'1', display:'flex', flexFlow:'column'}}>
+          <Box xs={6} sx={{flexGrow:'1', height:'100%'}}>
+            <h2>Recent News</h2>
+            <NewsList></NewsList>
           </Box>
         </Grid>
       </Grid>

@@ -30,7 +30,7 @@ function Appbar({isLoggedIn}) {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" sx={{height:'max-content'}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <SportsIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}/>

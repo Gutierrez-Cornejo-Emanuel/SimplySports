@@ -10,7 +10,7 @@ import Button from '@mui/material/Button';
 export const Lounge = () => {
   const navigate = useNavigate();
   return (
-    <Box sx={{flexGrow:1}}>
+    <Box sx={{flexGrow:1, display:'flex', flexFlow:'column'}}>
       <Grid>
         <AppBar position="static" sx={{bgcolor:'darkred'}}>
           <Container maxWidth="xl">
