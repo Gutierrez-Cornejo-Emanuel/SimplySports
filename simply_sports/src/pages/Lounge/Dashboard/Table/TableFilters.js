@@ -6,7 +6,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
 
-export default function SelectedListItem({setDataView}) {
+export default function TableFilters({setDataView}) {
   const [selectedIndex, setSelectedIndex] = React.useState(0);
   const handleListItemClick = (event, index) => {
     setSelectedIndex(index);

@@ -2,10 +2,11 @@ import React from 'react'
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import { Container } from '@mui/material';
-import { MatchList, NewsList } from './api/api';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import { MainMenuList } from './MenuList/MenuList';
+
+import { MatchList, NewsList } from './api/api';
 import {sports, leagues, teams} from './api/const/homemenuItems';
 
 export const Main = () => {

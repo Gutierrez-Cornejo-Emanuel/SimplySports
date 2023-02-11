@@ -11,12 +11,12 @@ import {
 import {About} from './pages/About/About'
 import {Learn} from './pages/Learn/Learn'
 import {Lounge} from './pages/Lounge/Lounge'
+import { Dashboard } from './pages/Lounge/Dashboard/Dashboard';
+import { Main } from './pages/Lounge/Main/Main';
 import {SignIn} from './pages/Account/SignIn';
 import { SignUp } from './pages/Account/SignUp';
 import { ThemeProvider } from '@mui/material';
 import { dashboardTheme } from './dashboardTheme';
-import { Dashboard } from './pages/Lounge/Dashboard';
-import { Main } from './pages/Lounge/Main';
 import { Practice } from './pages/Learn/Practice';
 import { Training } from './pages/Learn/Training';
 import { Tutorial } from './pages/Learn/Tutorial';
@@ -35,8 +35,8 @@ root.render(
           <Route path="signin" element={<SignIn />}></Route>
           <Route path="signup" element={<SignUp />}></Route>
           <Route path="lounge" element={<Lounge/>}>
-            <Route path='home' element={<Main />} ></Route>
-            <Route path='dashboard' element={<Dashboard />}></Route>
+            <Route path="home" element={<Main />}></Route>
+            <Route path="dashboard" element={<Dashboard />}></Route>
           </Route>
         </Route>
       </Routes>
