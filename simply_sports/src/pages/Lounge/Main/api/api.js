@@ -16,20 +16,17 @@ const api = () => {
 
 const MatchList = () => {
     return (
-        <Container>
-            <List sx={{maxHeight:'250px', overflow:'scroll'}}>
-            {matches.map((match) => (
-                <ListItem key={match._id.$oid} disablePadding
-                sx={{display:'inline-flex', width:'max-content'}}>
-                    <ListItemButton key={match._id.$oid}>
-                        <ListItemText 
-                        primary={match.teams.home.name + " vs. " + match.teams.away.name}/>
-                    </ListItemButton>
-                </ListItem>
-            ))}
-            </List>
-        </Container>
-
+        <List sx={{maxHeight:'250px', overflow:'scroll'}}>
+        {matches.map((match) => (
+            <ListItem key={match._id.$oid} disablePadding
+            sx={{display:'inline-flex', width:'max-content'}}>
+                <ListItemButton key={match._id.$oid}>
+                    <ListItemText 
+                    primary={match.teams.home.name + " vs. " + match.teams.away.name}/>
+                </ListItemButton>
+            </ListItem>
+        ))}
+        </List>
     )
 }
 

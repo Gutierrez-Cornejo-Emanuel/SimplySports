@@ -69,7 +69,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 export default function DashDrawer(props) {
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
   const user = props.user;
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -78,11 +78,15 @@ export default function DashDrawer(props) {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-
-  const handleClick = (event) => {
-    props.handleFilterChange(event)
-  }
  
+  const handleFilterClick = (event) => {
+    props.setFilterUpdate(event)
+  }
+
+  const handleActionClick = (event) => {
+    props.updateAction(event)
+  }
+
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -123,10 +127,10 @@ export default function DashDrawer(props) {
         </DrawerHeader>
         <Divider />
         <List>
-          <Typography variant='h6' paddingLeft={1}>Display Bets</Typography>
-          {['All', 'Active', 'Wins', 'Losses'].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton id={text} onClick={() => handleClick(index)}>
+          <Typography variant='h6' paddingLeft={1}>Betting History</Typography>
+          {['All', 'Recent', 'Wins', 'Losses'].map((text, index) => (
+            <ListItem key={index} disablePadding>
+              <ListItemButton onClick={() => handleFilterClick(index)}>
                 <ListItemText primary={text} />
               </ListItemButton>
             </ListItem>
@@ -134,10 +138,10 @@ export default function DashDrawer(props) {
         </List>
         <Divider />
         <List>
-          <Typography variant='h6' paddingLeft={1}>Betting Options</Typography>
-          {['New Bet', 'Edit Bet', 'Practice Betting'].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton id={text} onClick={handleClick}>
+          <Typography variant='h6' paddingLeft={1}>Practice Options</Typography>
+          {['Practice Session', 'Guided Session'].map((text, index) => (
+            <ListItem key={index} disablePadding>
+              <ListItemButton onClick={() => handleActionClick(index)}>
                 <ListItemText primary={text} />
               </ListItemButton>
             </ListItem>
