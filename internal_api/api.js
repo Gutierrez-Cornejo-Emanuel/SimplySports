@@ -57,4 +57,14 @@ apiRouter.post("/login/", async (req, res) => {
     }
 });
 
-module.exports = apiRouter;
+//need to test this, will ask about on mon/weds
+
+apiRouter.get("/sports/", async (req, res) => {
+    try {
+      const match_data = db.collection("match_data");
+      res.json(match_data);
+    } catch (err) {
+      console.error(err);
+      res.sendStatus(500);
+    }
+  });
