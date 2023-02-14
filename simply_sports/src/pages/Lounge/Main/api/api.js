@@ -9,12 +9,12 @@ const matches = require('./match_data.json');
 
 const MatchList = () => {
     return (
-        <List sx={{maxHeight:'250px', overflow:'scroll'}}>
+        <List sx={{maxHeight:'250px', width:'100%', overflow:'scroll'}}>
         {matches.map((match) => (
-            <ListItem key={match._id.$oid} disablePadding
-            sx={{display:'inline-flex', width:'max-content'}}>
+            <ListItem key={match._id.$oid} disablePadding 
+            sx={{width:'250px', display:'inline-flex'}}>
                 <ListItemButton key={match._id.$oid}>
-                    <ListItemText 
+                    <ListItemText
                     primary={match.teams.home.name + " vs. " + match.teams.away.name}/>
                 </ListItemButton>
             </ListItem>
@@ -40,4 +40,30 @@ const NewsList = () => {
     )
 }
 
-export { MatchList, NewsList }
+const ReactiveMatchList = ({updateSelection}) => {
+    const handleClick = (match) => {
+        const selectedMatch = {
+          target : {
+            id: "select-button"
+          },
+          match : match
+        }
+        updateSelection(selectedMatch)
+      }
+
+    return (
+        <List sx={{maxHeight:'750px', width:'100%', overflow:'scroll'}}>
+        {matches.map((match) => (
+            <ListItem key={match._id.$oid} disablePadding 
+            sx={{width:'250px', display:'inline-flex'}}>
+                <ListItemButton key={match._id.$oid} onClick={() => handleClick(match)}>
+                    <ListItemText
+                    primary={match.teams.home.name + " vs. " + match.teams.away.name}/>
+                </ListItemButton>
+            </ListItem>
+        ))}
+        </List>
+    )
+}
+
+export { MatchList, NewsList, ReactiveMatchList }

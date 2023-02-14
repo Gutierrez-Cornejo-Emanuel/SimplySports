@@ -1,10 +1,8 @@
-import { Button, Container, Divider, Grid, Table, TableBody, TableCell, TableHead, TableRow, Typography } from '@mui/material'
+import { Button, Divider, Grid } from '@mui/material'
 import * as React from 'react'
 import {matchGet} from './api'
-import { MatchList } from '../../Main/api/api';
-
-import TableContainer from '@mui/material/TableContainer';
-import Paper from '@mui/material/Paper';
+import { ReactiveMatchList } from '../../Main/api/api';
+import {MatchView } from './Match';
 
 
 export const Practice = (props) => {
@@ -27,8 +25,11 @@ const Train = ({setDashView}) => {
     
     const handleSelect = (event) => {
       setMatchSelection(event.target.id)
+
       if (event.target.id === "random-button") {
         setCurrMatch(matchGet(event.target.id));
+      } else if (event.target.id === "select-button") {
+        setCurrMatch(event.match)
       }
     }
 
@@ -98,7 +99,7 @@ const MatchTypeView = ({updateSelection, setDashView}) => {
                 <h2>Choose one of the options to the left.</h2>
               )}
               {selectMatch && (
-                <SelectionView />
+                <SelectionView updateSelection={updateSelection} />
               )}
 
           </Grid>
@@ -106,101 +107,10 @@ const MatchTypeView = ({updateSelection, setDashView}) => {
     )
   }
 
-const SelectionView = () => {
-  console.log('select-match-view')
+const SelectionView = ({ updateSelection }) => {
   return (
-    <div>
-      <MatchList></MatchList>
-    </div>
-  )
-}
-
-const MatchView = ({match, setDashView}) => {
-    const matchInfo = {
-        "home":match.teams.home.name,
-        "away":match.teams.away.name,
-        "league":match.league.name,
-        "season":match.league.round,
-        "year":match.league.season,
-        "referee":match.fixture.referee
-    }
-
-    const handleClick = () => {
-        setDashView(null)
-    }
-
-    const handleSubmit = () => {
-      console.log('submit-button')
-    }
-
-  return (
-    <Grid container sx={{display:'flex', alignItems:'center'}}>
-        <Grid sx={{display:'flex', flexFlow:'column'}}>
-            <Container sx={{padding:0, margin:0}}>
-                <SpanningTable match={matchInfo}></SpanningTable>
-            </Container>
-            <Container sx={{display:'flex', flexFlow:'column', width:'auto'}}>
-                <Button variant="contained" onClick={handleSubmit} disabled
-                sx={{margin:'5px'}}>
-                    Submit
-                </Button>
-                <Button variant="contained" onClick={handleClick}
-                sx={{margin:'5px'}}>
-                    Return to Match Selection
-                </Button>
-            </Container>
-        </Grid>
-        <Divider orientation="vertical" />
-        <Grid sx={{display:'flex', flexGrow:1, justifyContent:'center', alignItems:'center'}}>
-            <h2>Options.</h2>
-        </Grid>
+    <Grid container sx={{display:'flex', height:'100%'}}>
+      <ReactiveMatchList updateSelection={updateSelection}></ReactiveMatchList>
     </Grid>
   )
-}
-
-const SpanningTable = ({match}) => {
-  return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 'auto' }} aria-label="spanning table">
-        <TableHead>
-          <TableRow>
-            <TableCell align="center" colSpan={2}>
-              <Typography variant='h4' fontWeight={'bold'}>Match Summary</Typography>
-            </TableCell>
-          </TableRow>
-          <TableRow sx={{width:'auto'}}>
-            <TableCell align='left'>
-                {match['league']}
-            </TableCell>
-            <TableCell align='left'>
-                {match['year']} {match['season']}
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell align='left'>Referee</TableCell>
-            <TableCell align='left'>{match['referee'].split(',')[0]}</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell align='center'>
-              <Typography fontWeight={'bold'}>
-                Home
-              </Typography>
-            </TableCell>
-            <TableCell align='center'>
-              <Typography fontWeight={'bold'}>
-                Away  
-              </Typography>
-            </TableCell>
-          </TableRow>
-        </TableHead>
-
-        <TableBody>
-          <TableRow>
-            <TableCell align='center'>{match['home']}</TableCell>
-            <TableCell align='center'>{match['away']}</TableCell>
-          </TableRow>
-        </TableBody>
-      </Table>
-    </TableContainer>
-  );
 }
