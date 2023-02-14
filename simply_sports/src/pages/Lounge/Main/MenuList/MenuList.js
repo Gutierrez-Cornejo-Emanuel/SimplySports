@@ -11,7 +11,7 @@ import Stack from '@mui/material/Stack';
 export const MainMenuList = (props) => {
   const items = props.items;
   const [open, setOpen] = React.useState(false);
-  const [selected, setSelected] = React.useState(items[0].label)
+  const [selected, setSelected] = React.useState(items[0].label) 
   const anchorRef = React.useRef(null);
 
   const handleToggle = () => {
@@ -69,6 +69,7 @@ export const MainMenuList = (props) => {
           placement="bottom-start"
           transition
           disablePortal
+          sx={{zIndex:2}}
         >
           {({ TransitionProps, placement }) => (
             <Grow

@@ -5,7 +5,7 @@ import { Outlet } from 'react-router-dom';
 
 function App() {
   return (
-    <Grid container sx={{height:'100vh', display:'flex', flexFlow:'column', overflow:'hidden'}}>
+    <Grid container sx={{height:'100vh', display:'flex', flexFlow:'column'}}>
       <Appbar isLoggedIn='false'/>
       <Outlet/>
     </Grid>

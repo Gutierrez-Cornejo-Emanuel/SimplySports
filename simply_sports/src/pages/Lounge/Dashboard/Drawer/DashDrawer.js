@@ -73,6 +73,7 @@ export default function DashDrawer(props) {
   const user = props.user;
   const handleDrawerOpen = () => {
     setOpen(true);
+
   };
 
   const handleDrawerClose = () => {
@@ -139,14 +140,24 @@ export default function DashDrawer(props) {
         <Divider />
         <List>
           <Typography variant='h6' paddingLeft={1}>Practice Options</Typography>
-          {['Practice Session', 'Guided Session'].map((text, index) => (
+          {/* {['Practice Session', 'Guided Session'].map((text, index) => (
             <ListItem key={index} disablePadding>
               <ListItemButton onClick={() => handleActionClick(index)}>
                 <ListItemText primary={text} />
               </ListItemButton>
             </ListItem>
-          ))}
-        </List>
+          ))} */}
+            <ListItem key={0} disablePadding>
+                <ListItemButton onClick={() => handleActionClick(0)}>
+                  <ListItemText primary={'Practice Session'} />
+                </ListItemButton>
+              </ListItem>
+            <ListItem key={1} disablePadding>
+              <ListItemButton disabled onClick={() => handleActionClick(1)}>
+                <ListItemText primary={'Guided Session'} />
+              </ListItemButton>
+            </ListItem>
+          </List>
       </Drawer>
       <Main open={open}>
         <DrawerHeader />

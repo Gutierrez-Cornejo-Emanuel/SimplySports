@@ -1,18 +1,11 @@
 import React from 'react'
-import { List, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material'
+import { List } from '@mui/material'
 import { ListItem } from '@mui/material';
 import { ListItemButton } from '@mui/material';
 import { ListItemText } from '@mui/material';
-import { Container } from '@mui/system';
 
 const news = require('./news_articles.json');
 const matches = require('./match_data.json');
-
-const api = () => {
-  return (
-    <div>api</div>
-  )
-}
 
 const MatchList = () => {
     return (
