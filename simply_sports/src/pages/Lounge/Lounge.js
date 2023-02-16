@@ -4,36 +4,39 @@ import Grid from '@mui/material/Grid';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Container from '@mui/material/Container';
-import { Outlet, useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button';
+import { Outlet, useNavigate } from 'react-router-dom';
 
 export const Lounge = () => {
   const navigate = useNavigate();
+
   return (
-    <Box sx={{flexGrow:1}}>
-      <Grid>
+    <Box sx={{flexGrow:1, display:'flex', flexFlow:'column'}}>
+      <Grid id='lounge-view' sx={{flexGrow:1, display:'flex', flexFlow:'column'}}>
         <AppBar position="static" sx={{bgcolor:'darkred'}}>
           <Container maxWidth="xl">
             <Toolbar disableGutters>
               <Button
-                    key='home'
-                    onClick={() => navigate('home')}
-                    sx={{ my: 2, color: 'white', display: 'block', flexGrow:1}}
-                  >
-                    Home
-                  </Button>
-              <Button
-                key='dashboard'
-                onClick={() => navigate('dashboard')}
+                key='main'
+                id='main'
+                onClick={() => navigate('home')}
                 sx={{ my: 2, color: 'white', display: 'block', flexGrow:1}}
               >
-                Dashboard
+              Main
+              </Button>
+              <Button
+              key='dashboard'
+              id='dashboard'
+              onClick={() => navigate('dashboard')}
+              sx={{ my: 2, color: 'white', display: 'block', flexGrow:1}}
+              >
+              Dashboard
               </Button>
             </Toolbar>
           </Container>
         </AppBar>
+        <Outlet></Outlet>
       </Grid>
-    <Outlet/>
     </Box>
   )
 }
