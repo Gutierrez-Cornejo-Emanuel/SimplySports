@@ -34,7 +34,7 @@ apiRouter.get("/", (req,res) => {
 apiRouter.post("/signup/", async (req, res) => {
     try {
         const users = db.collection("users");
-        const hashed_password = await bcrypt.hash(req.body.password, 10);
+        const hashed_password = await bcrypt.hash(req.body.password,10);
         const user_info = {username: req.body.username, email: req.body.email, password: hashed_password, coins: 0}
         username_query = {username: req.body.username}
         //TODO: figure out replacement for count()
@@ -87,5 +87,21 @@ apiRouter.get("/sports/", async (req, res) => {
       res.sendStatus(500);
     }
   });
+
+  //responds with json containing a random document from match_data collection.
+  apiRouter.get("/random-match", async (req, res) => {
+    try {
+        cursor =  db.collection("match_data").aggregate([{$sample: {size: 1}}]);
+        match = await cursor.next()
+        res.json(match);
+
+        return;
+        
+
+    } catch(err) {
+        console.error(err);
+        res.sendStatus(500);
+    }
+  }) 
 
   module.exports = apiRouter;
