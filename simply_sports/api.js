@@ -26,6 +26,10 @@ const db = client.db(
 const apiRouter = Router();
 
 //Endpoint to test that api is running, to be removed
+apiRouter.get("/", (req,res) => {
+    res.send("This is a test");
+});
+
 apiRouter.post("/signup/", async (req, res) => {
     try {
         const users = db.collection("users");
@@ -100,5 +104,20 @@ apiRouter.get("/match/", async (req, res) => {
         res.sendStatus(500);
       }
 })
+
+apiRouter.get("/random-match", async (req, res) => {
+    try {
+        const cursor =  db.collection("match_data").aggregate([{$sample: {size: 1}}]);
+        const match = await cursor.next()
+        res.json(match);
+
+        return;
+        
+
+    } catch(err) {
+        console.error(err);
+        res.sendStatus(500);
+    }
+  }) 
 
   module.exports = apiRouter;

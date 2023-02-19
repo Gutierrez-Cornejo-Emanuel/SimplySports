@@ -45,7 +45,7 @@ export default function SignUp() {
     console.log(data)
     if (data["username"] && data["email"] &&
     data["password"] && data["firstname"] && data["lastname"]) {
-      fetch('/api/signup/', {
+      fetch('/team19/api/signup/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
