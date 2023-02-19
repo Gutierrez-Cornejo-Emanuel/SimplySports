@@ -30,14 +30,39 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignUp() {
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    const user_data = new FormData(event.currentTarget);
+    const data = {
+      firstname: user_data.get('firstname'),
+      lastname: user_data.get('lastname'),
+      username: user_data.get('username'),
+      email: user_data.get('email'),
+      password: user_data.get('password'),
+    }
+    console.log(data)
+    if (data["username"] && data["email"] &&
+    data["password"] && data["firstname"] && data["lastname"]) {
+      fetch('/api/signup/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log('Success:', data);
+          navigate('../lounge/dashboard')
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+    } else {
+      alert("Missing one or more entries!")
+    }
   };
 
   return (
@@ -63,10 +88,10 @@ export default function SignUp() {
               <Grid item xs={12} sm={6}>
                 <TextField
                   autoComplete="given-name"
-                  name="firstName"
+                  name="firstname"
                   required
                   fullWidth
-                  id="firstName"
+                  id="firstname"
                   label="First Name"
                   autoFocus
                 />
@@ -75,9 +100,9 @@ export default function SignUp() {
                 <TextField
                   required
                   fullWidth
-                  id="lastName"
+                  id="lastname"
                   label="Last Name"
-                  name="lastName"
+                  name="lastname"
                   autoComplete="family-name"
                 />
               </Grid>
@@ -89,6 +114,16 @@ export default function SignUp() {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="username"
+                  label="Username"
+                  name="username"
+                  autoComplete="username"
                 />
               </Grid>
               <Grid item xs={12}>
