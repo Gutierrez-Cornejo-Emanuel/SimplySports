@@ -14,7 +14,7 @@ import {Lounge} from './pages/Lounge/Lounge'
 import { Dashboard } from './pages/Lounge/Dashboard/Dashboard';
 import { Main } from './pages/Lounge/Main/Main';
 import {SignIn} from './pages/Account/SignIn';
-import { SignUp } from './pages/Account/SignUp';
+import SignUp from './pages/Account/SignUp';
 import { ThemeProvider } from '@mui/material';
 import { dashboardTheme } from './dashboardTheme';
 import { Practice } from './pages/Learn/Practice';
