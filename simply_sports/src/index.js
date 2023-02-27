@@ -24,7 +24,7 @@ import { Tutorial } from './pages/Learn/Tutorial';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <ThemeProvider theme={dashboardTheme}>
-    <BrowserRouter basename='/team19'>
+    <BrowserRouter basename='/team19/'>
       <Routes>
         <Route path="/" element={<App />}>
           <Route path="/" element={<About />}></Route>
