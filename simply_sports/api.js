@@ -119,5 +119,14 @@ apiRouter.get("/random-match", async (req, res) => {
         res.sendStatus(500);
     }
   }) 
-
+apiRouter.get("/current-matches", async (req, res) => {
+    try {
+      const match_data = db.collection("current_matches");
+      const all_matches = await match_data.find({}).toArray();
+      res.json(all_matches);
+    } catch (err) {
+      console.error(err);
+      res.sendStatus(500);
+    }
+  });
   module.exports = apiRouter;
