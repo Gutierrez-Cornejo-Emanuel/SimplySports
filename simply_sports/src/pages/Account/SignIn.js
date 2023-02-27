@@ -27,7 +27,7 @@ function Copyright(props) {
   );
 }
 
-const apiRoute = "/team19/api/login/password"
+const apiRoute = "/team19/api/login/"
 const theme = createTheme();
 
 export function SignIn() {
@@ -37,14 +37,14 @@ export function SignIn() {
     event.preventDefault();
     const user_data = new FormData(event.currentTarget);
     const data = {
-      username: user_data.get('username'),
+      email: user_data.get('email'),
       password: user_data.get('password')
     } 
     console.log({
-      username: data['username'],
+      email: data['email'],
       password: data['password'],
     });
-    if (data["username"] &&
+    if (data["email"] &&
     data["password"]) {
       fetch(apiRoute, {
         method: 'POST',
@@ -55,7 +55,7 @@ export function SignIn() {
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
+          console.log('Success:', data);
           navigate('../lounge/dashboard')
         })
         .catch((error) => {
@@ -87,11 +87,12 @@ export function SignIn() {
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
               margin="normal"
+              required
               fullWidth
-              id="username"
-              label="Username"
-              name="username"
-              autoComplete="username"
+              id="email"
+              label="Email Address"
+              name="email"
+              autoComplete="email"
               autoFocus
             />
             <TextField
@@ -107,7 +108,6 @@ export function SignIn() {
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
-              disabled
             />
             <Button
               type="submit"
@@ -118,6 +118,11 @@ export function SignIn() {
               Sign In
             </Button>
             <Grid container>
+              <Grid item xs>
+                <Link href="#" variant="body2">
+                  Forgot password?
+                </Link>
+              </Grid>
               <Grid item>
                 <Link href="signup" variant="body2">
                   {"Don't have an account? Sign Up"}

@@ -5,14 +5,10 @@ Dependencies:
     bcrypt
     dotenv
     body-parser
-    passport
-    passport-local
 */
 
 const { Router } = require("express");
 const { MongoClient, ObjectId } = require("mongodb");
-var passport = require('passport');
-var LocalStrategy = require('passport-local');
 
 const bcrypt = require("bcrypt");
 
@@ -28,52 +24,7 @@ const db = client.db(
     process.env.MODE === "production" ? "team19": "sports"
 );
 const apiRouter = Router();
-///////////////////////////////////
-passport.use(new LocalStrategy(async function verify(username, password, cb) {
-  try {
-    const users = db.collection("users");
-    const login_query = {username: username};
-    const user = await users.findOne(login_query);
-    if (user == null) {
-        return cb(null, false, { message : 'Incorrect username or password.'})
-    }
-    if (await bcrypt.compare(password, user.password)) {
-        return cb(null, user)
-    }
-    else {
-        return cb(null, false, {message: 'Incorrect username or password.'})      
-    }
-} catch(err) {
-    console.error(err);
-    return cb(err)
-}
-}))
 
-passport.serializeUser(function(user, cb) {
-  process.nextTick(function() {
-      cb(null, { id: user.id, username: user.username });
-  });
-});
-passport.deserializeUser(function(user, cb) {
-  process.nextTick(function() {
-      return cb(null, user);
-  });
-});
-
-apiRouter.post('/login/password', passport.authenticate('local', {
-  failureRedirect: '/login',
-  failureMessage: true
-}), function(req, res) {
-  res.json("Success")
-})
-
-apiRouter.post('/logout', function(req, res, next) {
-  req.logout(function(err) {
-    if (err) { return next(err); }
-    res.redirect('/team19/lounge')
-  })
-})
-///////////////////////////////////////////////
 //Endpoint to test that api is running, to be removed
 apiRouter.get("/", (req,res) => {
     res.send("This is a test");
@@ -104,7 +55,7 @@ apiRouter.post("/signup/", async (req, res) => {
     }
 });
 
-apiRouter.post("/DEPRECIATED_login/", async (req, res) => {
+apiRouter.post("/login/", async (req, res) => {
     try {
         const users = db.collection("users");
         const user_info = {email: req.body.email, coins: 0};
