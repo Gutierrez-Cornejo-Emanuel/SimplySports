@@ -9,13 +9,15 @@ const matches = require('./match_data.json');
 
 const MatchList = () => {
     return (
-        <List sx={{maxHeight:'250px', width:'100%', overflow:'scroll'}}>
+        <List sx={{maxHeight:'315px', width:'100%', overflow:'scroll'}}>
         {matches.map((match) => (
             <ListItem key={match._id.$oid} disablePadding 
             sx={{width:'250px', display:'inline-flex'}}>
                 <ListItemButton key={match._id.$oid}>
+                <img src={match.teams.home.logo} alt="team logo" width="25"/>
                     <ListItemText
                     primary={match.teams.home.name + " vs. " + match.teams.away.name}/>
+                <img src={match.teams.away.logo} alt="team logo" width="25"/>
                 </ListItemButton>
             </ListItem>
         ))}
@@ -58,7 +60,7 @@ const ReactiveMatchList = ({updateSelection}) => {
             sx={{width:'250px', display:'inline-flex'}}>
                 <ListItemButton key={match._id.$oid} onClick={() => handleClick(match)}>
                     <ListItemText
-                    primary={match.teams.home.name + " vs. " + match.teams.away.name}/>
+                    primary={ match.teams.home.name + " vs. " + match.teams.away.name}/>
                 </ListItemButton>
             </ListItem>
         ))}
