@@ -42,8 +42,7 @@ apiRouter.post("/signup/", async (req, res) => {
           password: hashed_password, 
           coins: 0}
         let username_query = {username: req.body.username}
-        //TODO: figure out replacement for count()
-        if (await users.find(username_query).countDocuments > 0) {
+        if (await users.countDocuments(username_query) > 0) {
             console.log("username already taken");
             res.send("Username already taken");
             return;
