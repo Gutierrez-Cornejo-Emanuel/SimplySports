@@ -43,7 +43,7 @@ apiRouter.post("/signup/", async (req, res) => {
           coins: 0}
         let username_query = {username: req.body.username}
         //TODO: figure out replacement for count()
-        if (await users.find(username_query).count() > 0) {
+        if (await users.find(username_query).countDocuments > 0) {
             console.log("username already taken");
             res.send("Username already taken");
             return;
@@ -59,8 +59,8 @@ apiRouter.post("/signup/", async (req, res) => {
 apiRouter.post("/login/", async (req, res) => {
     try {
         const users = db.collection("users");
-        const user_info = {username: req.body.username, email: req.body.email, coins: 0};
-        const login_query = {username: req.body.username};
+        const user_info = {email: req.body.email, coins: 0};
+        const login_query = {email: req.body.email};
         const user = await users.findOne(login_query);
         if (user == null) {
             res.send("Invalid Login");

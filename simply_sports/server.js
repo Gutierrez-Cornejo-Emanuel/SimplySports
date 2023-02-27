@@ -15,15 +15,11 @@ app.use(morgan('dev'))
 app.use(body_parser.json({extended: false}),
 body_parser.urlencoded({extended: false}));
 app.use("/api/", api);
+app.use("/team19/api/", api) ///////////////////////////////////////////////
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
-let host;
-if (isProduction) {
-  host='127.0.0.1';
-} else {
-  host='localhost';
-}
+let host = '127.0.0.1';
 
 prefixRouter.get('/*', function (req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));

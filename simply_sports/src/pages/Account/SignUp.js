@@ -27,6 +27,7 @@ function Copyright(props) {
   );
 }
 
+const apiRoute = "/team19/api/signup/"
 const theme = createTheme();
 
 export default function SignUp() {
@@ -45,7 +46,7 @@ export default function SignUp() {
     console.log(data)
     if (data["username"] && data["email"] &&
     data["password"] && data["firstname"] && data["lastname"]) {
-      fetch('/team19/api/signup/', {
+      fetch(apiRoute, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

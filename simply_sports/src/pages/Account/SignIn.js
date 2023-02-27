@@ -12,12 +12,13 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useNavigate } from 'react-router-dom';
 
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <Link color="inherit" href="https://portfolios.talentsprint.com/team19">
+      <Link color="inherit" href="https://portfolios.talentsprint.com/team19/">
         TechWise
       </Link>{' '}
       {new Date().getFullYear()}
@@ -26,16 +27,43 @@ function Copyright(props) {
   );
 }
 
+const apiRoute = "/team19/api/signup/"
 const theme = createTheme();
 
 export function SignIn() {
+  const navigate = useNavigate();
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
+    const user_data = new FormData(event.currentTarget);
+    const data = {
+      email: user_data.get('email'),
+      password: user_data.get('password')
+    } 
     console.log({
-      email: data.get('email'),
-      password: data.get('password'),
+      email: data['email'],
+      password: data['password'],
     });
+    if (data["email"] &&
+    data["password"]) {
+      fetch(apiRoute, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log('Success:', data);
+          navigate('../lounge/dashboard')
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+    } else {
+      alert("Missing one or more entries!")
+    }
   };
 
   return (
