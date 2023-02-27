@@ -56,7 +56,7 @@ export default function SignUp() {
         .then((response) => response.json())
         .then((data) => {
           console.log('Success:', data);
-          navigate('../lounge/dashboard')
+          navigate('../signin')
         })
         .catch((error) => {
           console.error('Error:', error);

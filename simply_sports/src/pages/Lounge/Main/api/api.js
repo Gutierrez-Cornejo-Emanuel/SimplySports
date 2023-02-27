@@ -4,13 +4,23 @@ import { ListItem } from '@mui/material';
 import { ListItemButton } from '@mui/material';
 import { ListItemText } from '@mui/material';
 
-const news = require('./news_articles.json');
-const matches = require('./match_data.json');
+const matchApiRoute = "/team19/api/current-matches"
+const newsApiRoute = "/team19/api/news"
+const allmatchesApiRoute = "/team19/api/sports"
 
 const MatchList = () => {
+    const [curr_matches, setCurrentMatches] = React.useState([]);
+
+    React.useEffect(() => {
+        fetch(matchApiRoute)
+            .then(response => response.json())
+            .then(data =>
+                setCurrentMatches(data));
+    }, []);
+
     return (
         <List sx={{maxHeight:'315px', width:'100%', overflow:'scroll'}}>
-        {matches.map((match) => (
+        {curr_matches.map((match) => (
             <ListItem key={match._id.$oid} disablePadding 
             sx={{width:'250px', display:'inline-flex'}}>
                 <ListItemButton key={match._id.$oid}>
@@ -26,6 +36,14 @@ const MatchList = () => {
 }
 
 const NewsList = () => {
+    const [news, setNews] = React.useState([]);
+
+    React.useEffect(() => {
+        fetch(newsApiRoute)
+            .then(response => response.json())
+            .then(data =>
+                setNews(data));
+    }, []);
     return (
         <List sx={{maxHeight:'250px', overflow:'scroll'}}>
         {news.map((article) => (
@@ -43,6 +61,15 @@ const NewsList = () => {
 }
 
 const ReactiveMatchList = ({updateSelection}) => {
+    const [all_matches, setAllMatches] = React.useState([]);
+
+    React.useEffect(() => {
+        fetch(allmatchesApiRoute)
+            .then(response => response.json())
+            .then(data =>
+                setAllMatches(data));
+    }, []);
+
     const handleClick = (match) => {
         const selectedMatch = {
           target : {
@@ -55,7 +82,7 @@ const ReactiveMatchList = ({updateSelection}) => {
 
     return (
         <List sx={{maxHeight:'750px', width:'100%', overflow:'scroll'}}>
-        {matches.map((match) => (
+        {all_matches.map((match) => (
             <ListItem key={match._id.$oid} disablePadding 
             sx={{width:'250px', display:'inline-flex'}}>
                 <ListItemButton key={match._id.$oid} onClick={() => handleClick(match)}>

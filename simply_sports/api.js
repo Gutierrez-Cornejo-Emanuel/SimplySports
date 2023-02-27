@@ -91,6 +91,17 @@ apiRouter.get("/sports/", async (req, res) => {
     }
   });
 
+  apiRouter.get("/news/", async (req, res) => {
+    try {
+      const articles = db.collection("news_articles");
+      const all_articles = await articles.find({}).toArray();
+      res.json(all_articles);
+    } catch (err) {
+      console.error(err);
+      res.sendStatus(500);
+    }
+  });
+
 apiRouter.get("/match/", async (req, res) => {
     try {
         const match_data = db.collection("match_data");
