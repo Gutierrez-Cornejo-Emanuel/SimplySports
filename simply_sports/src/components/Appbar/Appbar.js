@@ -11,6 +11,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import SportsIcon from '@mui/icons-material/Sports';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { mainAppbarPages, mainAppbarSettings } from './const/appbarListItems';
 import { useNavigate } from 'react-router-dom'
 
@@ -81,7 +82,9 @@ function Appbar({isLoggedIn}) {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar>
+                  <AccountCircleIcon></AccountCircleIcon>
+                </Avatar>
               </IconButton>
             </Tooltip>
             <Menu
